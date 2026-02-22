@@ -5,8 +5,10 @@ public class TaskService {
 
     private List<Task> tasks = new ArrayList<>();
 
-    public void addTask(){}
+    public void addTask(Task task){}
     public void deleteTask(){}
-    public void findTask(){}
+    public void findTask(int id){}
+    public void findTaska(int id){}
+    public void findTaskb(int id){}
 }
 
