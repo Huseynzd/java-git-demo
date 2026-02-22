@@ -8,7 +8,6 @@ public class TaskService {
     public void addTask(Task task){}
     public void deleteTask(){}
     public void findTask(int id){}
-    public void findTaska(int id){}
-    public void findTaskb(int id){}
+
 }
 
