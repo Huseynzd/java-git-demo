@@ -5,17 +5,18 @@ class Main{
         TaskService service = new TaskService();
 
 
-        Scanner scanner = new Scanner(System.in);
+      while(true){
+          Scanner scanner = new Scanner(System.in);
 
-        System.out.println("""
+          System.out.println("""
                 1. Add Task
                 2. Show Tasks
                 3. Delete Task
-                4. Exit""");
+                4. Find Task
+                5. Exit""");
 
-        int choice = scanner.nextInt();
+          int choice = scanner.nextInt();
 
-      while(true){
           switch (choice){
               case 1:
                   System.out.println("Enter id:");
@@ -32,8 +33,20 @@ class Main{
                   Task newTask = new  Task(newId,newTitle,newDescription);
                   service.addTask(newTask);
                   break;
+
               case 2:
                   System.out.println("Your tasks:");
+                  System.out.println(service.getTasks());
+                  break;
+
+              case 3:
+                  System.out.println("Enter ID for remove task:");
+                  int selection = scanner.nextInt();
+
+                  service.deleteTask(selection);
+                  break;
+
+
 
           }
       }
