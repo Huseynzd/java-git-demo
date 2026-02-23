@@ -3,6 +3,20 @@ public class Task {
    private String title;
    private String description;
 
+    @Override
+    public String toString() {
+        return "Task{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                '}';
+    }
+
+    public Task(int id, String title, String description){
+       this.id = id;
+       this.title = title;
+       this.description = description;
+   }
     public int getId() {
         return id;
     }
