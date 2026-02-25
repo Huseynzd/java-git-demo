@@ -31,7 +31,13 @@ class Main{
                   String newDescription = scanner.nextLine();
 
                   Task newTask = new  Task(newId,newTitle,newDescription);
-                  service.addTask(newTask);
+                  try {
+                      service.addTask(newTask);
+
+                  }catch (RuntimeException e){
+                      System.out.println(e.getMessage());
+                  }
+
                   break;
 
               case 2:
