@@ -4,8 +4,8 @@ class Main{
     public static void main(String[] args) {
         TaskService service = new TaskService();
 
-
-      while(true){
+        boolean loop = true;
+      while(loop){
           Scanner scanner = new Scanner(System.in);
 
           System.out.println("""
@@ -13,7 +13,8 @@ class Main{
                 2. Show Tasks
                 3. Delete Task
                 4. Find Task
-                5. Exit""");
+                5. Update Task
+                6. Exit""");
 
           int choice = scanner.nextInt();
 
@@ -51,7 +52,27 @@ class Main{
 
                   service.deleteTask(selection);
                   break;
+              case 4:
+                  System.out.println("Enter ID:");
+                  System.out.println(service.findTask(scanner.nextInt()));
+                  break;
+              case 5:
+                  System.out.println("Enter ID:");
+                  int id = scanner.nextInt();
+                  scanner.nextLine();
 
+                  System.out.println("Enter new title:");
+                  String newT = scanner.nextLine();
+
+                  System.out.println("Enter new description");
+                  String newD = scanner.nextLine();
+
+                  service.updateTask(id,newT,newD);
+                  break;
+
+              case 6:
+                  System.out.println("Exiting...");
+                  loop = false;
 
 
           }
