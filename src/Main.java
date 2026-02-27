@@ -4,9 +4,11 @@ class Main{
     public static void main(String[] args) {
         TaskService service = new TaskService();
 
+        Scanner scanner = new Scanner(System.in);
+
         boolean loop = true;
       while(loop){
-          Scanner scanner = new Scanner(System.in);
+
 
           System.out.println("""
                 1. Add Task
