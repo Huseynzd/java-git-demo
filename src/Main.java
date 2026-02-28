@@ -4,10 +4,11 @@ class Main{
     public static void main(String[] args) {
         TaskService service = new TaskService();
 
+
         Scanner scanner = new Scanner(System.in);
 
         boolean loop = true;
-      while(loop){
+        while(loop){
 
 
           System.out.println("""
@@ -16,7 +17,8 @@ class Main{
                 3. Delete Task
                 4. Find Task
                 5. Update Task
-                6. Exit""");
+                6. Task Status
+                7. Exit""");
 
           int choice = scanner.nextInt();
 
@@ -33,7 +35,9 @@ class Main{
                   System.out.println("Enter description:");
                   String newDescription = scanner.nextLine();
 
-                  Task newTask = new  Task(newId,newTitle,newDescription);
+
+
+                  Task newTask = new  Task(newId,newTitle,newDescription,0);
                   try {
                       service.addTask(newTask);
 
@@ -71,8 +75,34 @@ class Main{
 
                   service.updateTask(id,newT,newD);
                   break;
-
               case 6:
+                  System.out.println("Enter ID:");
+                    int statusID = scanner.nextInt();
+                    scanner.nextLine();
+
+                  System.out.println("Enter Status:"+"\n"+
+                          "-Default Status is TODO"+"\n" +
+                          "-Enter 1 for IN_PROGRESS" +"\n"+
+                          "-Enter 2 for DONE");
+
+                  int statusChoice = scanner.nextInt();
+                  Status selectedStatus = null;
+
+                  switch (statusChoice){
+                      case 1:
+                          selectedStatus = Status.IN_PROGRESS;
+                          break;
+                      case 2:
+                          selectedStatus =Status.DONE;
+                          break;
+                      default:
+                          System.out.println("Choice is not valid");
+                  }
+
+                  service.changeStatus(statusID,selectedStatus);
+                  break;
+
+              case 7:
                   System.out.println("Exiting...");
                   loop = false;
 

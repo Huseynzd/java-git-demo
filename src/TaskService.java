@@ -6,9 +6,9 @@ public class TaskService {
     private List<Task> tasks = new ArrayList<>();
 
     public Task findTask(int id){
-        for (int i = 0; i < tasks.size(); i++) {
-            if (tasks.get(i).getId() == id){
-                return tasks.get(i);
+        for (Task task : tasks) {
+            if (task.getId() == id) {
+                return task;
             }
         }
         return null;
@@ -47,6 +47,18 @@ public class TaskService {
         findTask(id).setDescription(description);
 
     }
+    public void changeStatus(int id ,Status status){
+        Task task = findTask(id);
+        if (task == null){
+            throw new RuntimeException("Task not found");
+        }else{
+            task.setStatus(status);
+        }
+
+    }
 }
+
+
+
 
 
